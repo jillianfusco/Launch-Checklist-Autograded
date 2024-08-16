@@ -70,26 +70,18 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
   
     let readyForLaunch = true;
 
-    if (readyForLaunch) {
-        faultyItems.style.visibility = "visible";
-        fuelStatus.innerHTML = "Fuel level high enough for launch";
-        cargoStatus.innerHTML = "Cargo mass low enough for launch";
-        launchStatus.innerHTML = "Shuttle is Ready for Launch";
-        launchStatus.style.color = "green";
-    } else {
-        faultyItems.style.visibility = "visible";
-        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
-        launchStatus.style.color = "red";
-    }
     
-    if (fuelLevel < 10000) {       
+    
+    if (fuelLevel < 10000 && cargoMass < 10000) {   
+        readyForLaunch = false;        
         fuelStatus.innerHTML = "Fuel level too low for launch";
         cargoStatus.innerHTML = "Cargo mass low enough for launch";
-        readyForLaunch = false;    
-    } else if (cargoMass > 10000) {        
+       
+    } else if (cargoMass > 10000 && fuelLevel > 10000) {  
+        readyForLaunch = false; 
         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
         fuelStatus.innerHTML = "Fuel level high enough for launch";
-        readyForLaunch = false;
+        
    } else if (fuelLevel < 10000 && cargoMass > 10000) {
         readyForLaunch = false;    
         fuelStatus.innerHTML = "Fuel level too low for launch";
@@ -98,6 +90,17 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         readyForLaunch = true;
    }
     
+   if (readyForLaunch) {
+    faultyItems.style.visibility = "visible";
+    fuelStatus.innerHTML = "Fuel level high enough for launch";
+    cargoStatus.innerHTML = "Cargo mass low enough for launch";
+    launchStatus.innerHTML = "Shuttle is Ready for Launch";
+    launchStatus.style.color = "green";
+} else {
+    faultyItems.style.visibility = "visible";
+    launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+    launchStatus.style.color = "red";
+}
         
  }
  

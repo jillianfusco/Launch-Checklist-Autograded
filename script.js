@@ -24,11 +24,12 @@ window.addEventListener("load", function() {
     // });
 
     let form = document.getElementById("launchForm"); 
+    let list = document.getElementById("faultyItems");
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        let list;
+        
         let pilot = document.querySelector("input[name=pilotName]").value;
         let copilot = document.querySelector("input[name=copilotName").value;
         let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
@@ -37,5 +38,6 @@ window.addEventListener("load", function() {
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass);
         
     });
+
     
  });
