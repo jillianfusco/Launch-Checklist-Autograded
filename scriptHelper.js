@@ -62,8 +62,31 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     let copilotStatus = document.getElementById("copilotStatus");
     let fuelStatus = document.getElementById("fuelStatus");
     let cargoStatus = document.getElementById("cargoStatus");
+    let faultyItems = document.getElementById("faultyItems");
+    let launchStatus = document.getElementById("launchStatus");
+
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    
 
     
+    if (fuelLevel < 10000) {
+        faultyItems.style.visibility = "visible";
+        fuelStatus.innerHTML = "Fuel level too low for launch";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        launchStatus.style.color = "red";
+    } else if (cargoMass > 10000) {
+        faultyItems.style.visibility = "visible";
+        cargoStatus.innerHTML = "Cargo mass too heavy for launch";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        launchStatus.style.color = "red";
+    } else {
+        fuelLevel.innerHTML = "Fuel level high enough for launch";
+        cargoStatus.innerHTML = "Cargo mass low enough for launch";
+        launchStatus.innerHTML = "Shuttle is Ready for Launch";
+        launchStatus.style.color = "green";
+    }
+
      
  }
  
