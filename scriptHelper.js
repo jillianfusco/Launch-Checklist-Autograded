@@ -31,14 +31,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
-    // changed cargoLevel to cargoMass to match HTML
-
-    // let pilotStatus  = document.getElementById("pilotStatus");
-    // fix the rest
-    // let copilot = document.getElementById("copilotName");
-    // let fuelLevel = document.getElementById("fuelLevel");
-    // let cargoMass = document.getElementById("cargoMass");
-    
+    // changed cargoLevel to cargoMass to match HTML   
 
     if (validateInput(pilot) === "Empty" || 
         validateInput(copilot) === "Empty" || 
@@ -49,7 +42,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
     if (validateInput(pilot) === "Is a Number") {
         alert("Please enter a valide name for Pilot.");      
-       
     }
 
     if (validateInput(copilot) === "Is a Number") {
@@ -58,15 +50,20 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
     if (validateInput(fuelLevel) === "Not a Number") {
         alert("Please enter a number for fuel level.");       
-        
     }
 
     if (validateInput(cargoMass) === "Not a Number") {
         alert("Please enter a number for cargo mass.");       
-        
     }
 
-    console.log("Form submission sucessful!")
+    console.log("Form submission sucessful!");
+
+    let pilotStatus  = document.getElementById("pilotStatus");
+    let copilotStatus = document.getElementById("copilotStatus");
+    let fuelStatus = document.getElementById("fuelStatus");
+    let cargoStatus = document.getElementById("cargoStatus");
+
+    
      
  }
  
