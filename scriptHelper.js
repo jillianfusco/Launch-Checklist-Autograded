@@ -2,6 +2,7 @@
 
 require('cross-fetch/polyfill');
 
+
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
     /*
@@ -29,45 +30,43 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
  }
  
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    // cargoLevel is cargoMass in HTML
+ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
+    // changed cargoLevel to cargoMass to match HTML
+
+    // let pilotStatus  = document.getElementById("pilotStatus");
+    // fix the rest
+    // let copilot = document.getElementById("copilotName");
+    // let fuelLevel = document.getElementById("fuelLevel");
+    // let cargoMass = document.getElementById("cargoMass");
     
-   
 
-    if (validateInput(pilot.value) === "Empty" || 
-        validateInput(copilot.value) === "Empty" || 
-        validateInput(fuelLevel.value) === "Empty" || 
-        validateInput(cargoLevel.value) === "Empty") {
-        alert("All fields are requied.");
-        event.preventDefault();
-        return;
+    if (validateInput(pilot) === "Empty" || 
+        validateInput(copilot) === "Empty" || 
+        validateInput(fuelLevel) === "Empty" || 
+        validateInput(cargoMass) === "Empty") {
+        alert("All fields are requied.");        
     }
 
-    if (validateInput(pilot.value) === "Is a Number") {
-        alert("Please enter a valide name for Pilot.");
-        event.preventDefault();
-        return;
+    if (validateInput(pilot) === "Is a Number") {
+        alert("Please enter a valide name for Pilot.");      
+       
     }
 
-    if (validateInput(copilot.value) === "Is a Number") {
+    if (validateInput(copilot) === "Is a Number") {
         alert("Please enter a valid name for Copilot.")
-        event.preventDefault();
-        return;
     }
 
-    if (validateInput(fuelLevel.value) === "Not a Number") {
-        alert("Please enter a number for fuel level.");
-        event.preventDefault();
-        return;
+    if (validateInput(fuelLevel) === "Not a Number") {
+        alert("Please enter a number for fuel level.");       
+        
     }
 
-    if (validateInput(cargoLevel.value) === "Not a Number") {
-        alert("Please enter a number for cargo mass.")
-        event.preventDefault();
-        return;
+    if (validateInput(cargoMass) === "Not a Number") {
+        alert("Please enter a number for cargo mass.");       
+        
     }
 
-
+    console.log("Form submission sucessful!")
      
  }
  
