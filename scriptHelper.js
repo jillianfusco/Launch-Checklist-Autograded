@@ -72,32 +72,44 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
     
     
-    if (fuelLevel < 10000 && cargoMass < 10000) {   
-        readyForLaunch = false;        
-        fuelStatus.innerHTML = "Fuel level too low for launch";
-        cargoStatus.innerHTML = "Cargo mass low enough for launch";
+//     if (fuelLevel < 10000 && cargoMass < 10000) {   
+//         readyForLaunch = false;        
+//         fuelStatus.innerHTML = "Fuel level too low for launch";
+//         cargoStatus.innerHTML = "Cargo mass low enough for launch";
        
-    } else if (cargoMass > 10000 && fuelLevel > 10000) {  
-        readyForLaunch = false; 
-        cargoStatus.innerHTML = "Cargo mass too heavy for launch";
-        fuelStatus.innerHTML = "Fuel level high enough for launch";
+//     } else if (cargoMass > 10000 && fuelLevel > 10000) {  
+//         readyForLaunch = false; 
+//         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
+//         fuelStatus.innerHTML = "Fuel level high enough for launch";
         
-   } else if (fuelLevel < 10000 && cargoMass > 10000) {
-        readyForLaunch = false;    
+//    } else if (fuelLevel < 10000 && cargoMass > 10000) {
+//         readyForLaunch = false;    
+//         fuelStatus.innerHTML = "Fuel level too low for launch";
+//         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
+//    } else {
+//         readyForLaunch = true;
+//    }
+
+    if (fuelLevel < 10000) {
+        readyForLaunch = false;
         fuelStatus.innerHTML = "Fuel level too low for launch";
+    } else {
+        fuelStatus.innerHTML = "Fuel level high enough for launch";
+    }
+
+    if (cargoMass > 10000) {
+        readyForLaunch = false;
         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
-   } else {
-        readyForLaunch = true;
-   }
+    } else {
+        cargoStatus.innerHTML = "Cargo mass low enough for launch";
+    }
+
+    faultyItems.style.visibility = "visible";
     
    if (readyForLaunch) {
-    faultyItems.style.visibility = "visible";
-    fuelStatus.innerHTML = "Fuel level high enough for launch";
-    cargoStatus.innerHTML = "Cargo mass low enough for launch";
     launchStatus.innerHTML = "Shuttle is Ready for Launch";
     launchStatus.style.color = "green";
 } else {
-    faultyItems.style.visibility = "visible";
     launchStatus.innerHTML = "Shuttle Not Ready for Launch";
     launchStatus.style.color = "red";
 }
