@@ -4,18 +4,20 @@ require('cross-fetch/polyfill');
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    // Here is the HTML formatting for our mission target div.
-    /*
-                 <h2>Mission Destination</h2>
-                 <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
-                     <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
-                 </ol>
-                 <img src="">
-    */
+
+    let missionTarget = document.getElementById("missionTarget");
+
+    missionTarget.innerHTML = `
+        <h2>Mission Destination</h2>
+                    <ol>
+                        <li>Name: ${name}</li>
+                        <li>Diameter: ${diameter}</li>
+                        <li>Star: ${star}</li>
+                        <li>Distance from Earth: ${distance}</li>
+                        <li>Number of Moons: ${moons}</li>
+                    </ol>
+                    <img src="${imageUrl}">
+    `;
  }
  
  function validateInput(testInput) {
@@ -70,26 +72,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
   
     let readyForLaunch = true;
 
-    
-    
-//     if (fuelLevel < 10000 && cargoMass < 10000) {   
-//         readyForLaunch = false;        
-//         fuelStatus.innerHTML = "Fuel level too low for launch";
-//         cargoStatus.innerHTML = "Cargo mass low enough for launch";
-       
-//     } else if (cargoMass > 10000 && fuelLevel > 10000) {  
-//         readyForLaunch = false; 
-//         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
-//         fuelStatus.innerHTML = "Fuel level high enough for launch";
-        
-//    } else if (fuelLevel < 10000 && cargoMass > 10000) {
-//         readyForLaunch = false;    
-//         fuelStatus.innerHTML = "Fuel level too low for launch";
-//         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
-//    } else {
-//         readyForLaunch = true;
-//    }
-
     if (fuelLevel < 10000) {
         readyForLaunch = false;
         fuelStatus.innerHTML = "Fuel level too low for launch";
@@ -117,15 +99,21 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  async function myFetch() {
+    // add the URL and return response.json()
      let planetsReturned;
  
-     planetsReturned = await fetch().then( function(response) {
+     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        return response.json();
          });
  
      return planetsReturned;
  }
  
  function pickPlanet(planets) {
+    // use Math.random() to return one planet from the list with a randomly-selected index
+
+    const randomIndex = Math.floor(Math.random() * planets.length);
+    return planets[randomIndex];
  }
  
  module.exports.addDestinationInfo = addDestinationInfo;
