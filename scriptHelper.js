@@ -1,4 +1,3 @@
-// Write your helper functions here!
 
 require('cross-fetch/polyfill');
 
@@ -29,7 +28,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     } else {
         return "Is a Number";
     }
-
  }
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
@@ -89,17 +87,15 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     faultyItems.style.visibility = "visible";
     
    if (readyForLaunch) {
-    launchStatus.innerHTML = "Shuttle is Ready for Launch";
-    launchStatus.style.color = "green";
-} else {
-    launchStatus.innerHTML = "Shuttle Not Ready for Launch";
-    launchStatus.style.color = "red";
-}
-        
+        launchStatus.innerHTML = "Shuttle is Ready for Launch";
+        launchStatus.style.color = "green";
+    } else {
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        launchStatus.style.color = "red";
+    }        
  }
  
  async function myFetch() {
-    // add the URL and return response.json()
      let planetsReturned;
  
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
@@ -110,8 +106,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  function pickPlanet(planets) {
-    // use Math.random() to return one planet from the list with a randomly-selected index
-
     const randomIndex = Math.floor(Math.random() * planets.length);
     return planets[randomIndex];
  }
